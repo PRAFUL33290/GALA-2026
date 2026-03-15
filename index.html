@@ -1,1 +1,1555 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gala ASPM Danse — Rêves en Corps — 24 Mai 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #070709;
+    --noir-scene: #0d0c12;
+    --or: #D4AA6A;
+    --or-pale: #EDD9A3;
+    --or-sombre: #9A7A44;
+    --blanc-pur: #FFFFFF;
+    --blanc-ivoire: #F5F0E8;
+    --blanc-doux: #C8BFB0;
+    --gris-clair: #A09485;
+    --rose-bollywood: #E0608A;
+    --saffran: #F0953A;
+    --violet-nuit: #1a1525;
+    --gris-scene: #161420;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--noir);
+    color: var(--blanc-ivoire);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--noir);
+  }
+
+  /* Rideaux de scène */
+  .rideau-gauche, .rideau-droite {
+    position: absolute;
+    top: 0;
+    width: 22%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .rideau-gauche {
+    left: 0;
+    background: linear-gradient(90deg, #1a0a2e 0%, #2d1155 60%, transparent 100%);
+    clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+    animation: rideauFlotter 6s ease-in-out infinite alternate;
+  }
+  .rideau-droite {
+    right: 0;
+    background: linear-gradient(270deg, #1a0a2e 0%, #2d1155 60%, transparent 100%);
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0% 50%);
+    animation: rideauFlotter 7s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes rideauFlotter {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(1.04); }
+  }
+
+  /* Spots de scène */
+  .spot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: spotPulse 8s ease-in-out infinite;
+  }
+  .spot-1 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,169,110,0.15), transparent 70%);
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+  }
+  .spot-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(212,96,138,0.1), transparent 70%);
+    bottom: 10%; right: 10%;
+    animation-delay: 3s;
+  }
+  .spot-3 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(232,148,58,0.08), transparent 70%);
+    bottom: 20%; left: 8%;
+    animation-delay: 5s;
+  }
+  @keyframes spotPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1) translateX(-50%); }
+    50% { opacity: 1; transform: scale(1.15) translateX(-50%); }
+  }
+  .spot-2 { animation: spotPulse2 9s ease-in-out infinite; }
+  .spot-3 { animation: spotPulse2 11s ease-in-out infinite; }
+  @keyframes spotPulse2 {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  /* Particules de lumière */
+  .particules {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .particule {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--or);
+    border-radius: 50%;
+    animation: monte linear infinite;
+    opacity: 0;
+  }
+  @keyframes monte {
+    0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+  }
+
+  /* Contenu hero */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    animation: fadeUp 1.4s ease-out both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-surtitre {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 1.4s 0.2s ease-out both;
+  }
+
+  .hero-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1.4s 0.4s ease-out both;
+  }
+
+  .hero-titre {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(3rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    color: var(--blanc-pur);
+    margin-bottom: 0.3rem;
+    animation: fadeUp 1.4s 0.5s ease-out both;
+  }
+
+  .hero-sous-titre {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--or-pale);
+    margin-bottom: 3rem;
+    animation: fadeUp 1.4s 0.7s ease-out both;
+  }
+
+  .separateur-or {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem auto;
+    animation: fadeUp 1.4s 0.9s ease-out both;
+  }
+  .ligne-or {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+  }
+  .losange {
+    width: 7px;
+    height: 7px;
+    background: var(--or);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .hero-infos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+    animation: fadeUp 1.4s 1.1s ease-out both;
+  }
+  .hero-info-item {
+    text-align: center;
+  }
+  .hero-info-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .hero-info-valeur {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--blanc-pur);
+  }
+  .hero-info-valeur small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--blanc-doux);
+    margin-top: 0.15rem;
+  }
+
+  .scroll-invite {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 2s 1.8s ease-out both;
+  }
+  .scroll-invite span {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or-sombre);
+  }
+  .scroll-fleche {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--or-sombre), transparent);
+    animation: scrollDescend 2s ease-in-out infinite;
+  }
+  @keyframes scrollDescend {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50% { transform: scaleY(1.3); opacity: 1; }
+  }
+
+  /* ── INTRO STATS ──────────────────────────── */
+  .stats-band {
+    background: var(--gris-scene);
+    border-top: 1px solid rgba(200,169,110,0.2);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem 5rem;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-chiffre {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--or);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    margin-top: 0.5rem;
+    font-weight: 400;
+  }
+
+  /* ── SECTION PROGRAMME ───────────────────── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .section-titre-grand {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--blanc-pur);
+  }
+
+  /* ── PARTIE LABEL ─────────────────────────── */
+  .partie-label {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .partie-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--or);
+    color: var(--or);
+  }
+  .partie-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--or-sombre), transparent);
+  }
+  .partie-duree {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--blanc-doux);
+    font-weight: 400;
+  }
+
+  /* ── LISTE DES BALLETS ────────────────────── */
+  .ballets-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 4rem;
+  }
+
+  .ballet-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid transparent;
+    transition: all 0.35s ease;
+    position: relative;
+    cursor: default;
+    background: rgba(255,255,255,0.015);
+  }
+  .ballet-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--or);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+  }
+  .ballet-item:hover {
+    background: rgba(200,169,110,0.06);
+    border-color: rgba(200,169,110,0.15);
+  }
+  .ballet-item:hover::before {
+    transform: scaleY(1);
+  }
+
+  /* Bollywood highlight */
+  .ballet-item.bollywood {
+    background: rgba(212,96,138,0.04);
+  }
+  .ballet-item.bollywood::before {
+    background: var(--rose-bollywood);
+  }
+  .ballet-item.bollywood:hover {
+    background: rgba(212,96,138,0.09);
+    border-color: rgba(212,96,138,0.2);
+  }
+
+  /* Final highlight */
+  .ballet-item.final {
+    background: rgba(200,169,110,0.06);
+    border-color: rgba(200,169,110,0.2);
+    margin-top: 1rem;
+  }
+  .ballet-item.final::before {
+    background: linear-gradient(180deg, var(--or), var(--saffran));
+    transform: scaleY(1);
+  }
+
+  /* Entracte */
+  .entracte {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    margin: 1rem 0;
+  }
+  .entracte-ligne {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,169,110,0.3), transparent);
+  }
+  .entracte-badge {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 500;
+  }
+  .entracte-duree {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--or-pale);
+  }
+
+  .ballet-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--or-sombre);
+    line-height: 1;
+    text-align: right;
+  }
+  .ballet-item.bollywood .ballet-num {
+    color: rgba(224,96,138,0.55);
+  }
+
+  .ballet-info {}
+  .ballet-titre-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .ballet-titre {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--blanc-pur);
+  }
+  .ballet-titre.indefini {
+    font-style: italic;
+    color: var(--gris-clair);
+    font-weight: 300;
+  }
+  .ballet-style {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    margin-top: 0.3rem;
+    font-weight: 400;
+  }
+  .ballet-item.bollywood .ballet-style {
+    color: rgba(224,96,138,0.85);
+  }
+
+  .tag-bollywood {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(224,96,138,0.18);
+    color: #F07AAA;
+    border: 1px solid rgba(224,96,138,0.4);
+    padding: 0.25rem 0.7rem;
+    font-weight: 500;
+  }
+  .tag-julien {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    background: rgba(240,149,58,0.15);
+    color: #F9A55A;
+    border: 1px solid rgba(240,149,58,0.4);
+    padding: 0.25rem 0.7rem;
+    font-weight: 500;
+  }
+  .tag-final {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(212,170,106,0.15);
+    color: var(--or-pale);
+    border: 1px solid rgba(212,170,106,0.4);
+    padding: 0.25rem 0.7rem;
+    font-weight: 500;
+  }
+
+  .ballet-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ballet-danseurs {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--blanc-pur);
+    line-height: 1;
+  }
+  .ballet-danseurs-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+
+  /* Transition vidéo */
+  .transition-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.5rem 0.6rem 5.2rem;
+    opacity: 0.55;
+  }
+  .transition-icon {
+    font-size: 0.8rem;
+    color: var(--or-sombre);
+  }
+  .transition-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    font-weight: 400;
+  }
+
+  /* ── FOCUS BOLLYWOOD ─────────────────────── */
+  .bollywood-section {
+    background: var(--noir-scene);
+    border-top: 1px solid rgba(212,96,138,0.15);
+    border-bottom: 1px solid rgba(212,96,138,0.15);
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .bollywood-section::before {
+    content: '🪷';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.03;
+    right: -3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .bollywood-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .bollywood-card {
+    border: 1px solid rgba(212,96,138,0.2);
+    padding: 1.8rem;
+    position: relative;
+    background: rgba(212,96,138,0.03);
+    transition: all 0.3s ease;
+  }
+  .bollywood-card:hover {
+    background: rgba(212,96,138,0.07);
+    border-color: rgba(212,96,138,0.4);
+  }
+  .bollywood-card.grand-final {
+    border-color: rgba(200,169,110,0.35);
+    background: rgba(200,169,110,0.04);
+    grid-column: 1 / -1;
+  }
+  .bollywood-card.grand-final:hover {
+    background: rgba(200,169,110,0.08);
+    border-color: rgba(200,169,110,0.5);
+  }
+
+  .bcard-numero {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(224,96,138,0.75);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  .bcard-titre {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--blanc-pur);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .bcard-groupe {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #F07AAA;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+  .bcard-count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .bcard-count-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--or);
+    line-height: 1;
+  }
+  .bcard-count-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--blanc-doux);
+    font-weight: 400;
+  }
+
+  .bcard-danseurs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .bcard-nom {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.65rem;
+    color: var(--blanc-ivoire);
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .bcard-nom:hover {
+    background: rgba(224,96,138,0.12);
+    border-color: rgba(224,96,138,0.3);
+    color: var(--blanc-pur);
+  }
+  .bcard-nom.julien {
+    background: rgba(240,149,58,0.12);
+    border-color: rgba(240,149,58,0.35);
+    color: #F9A55A;
+    font-weight: 500;
+  }
+  .bcard-note {
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--or-sombre);
+    font-style: italic;
+  }
+
+  /* Grand final */
+  .grand-final .bcard-titre {
+    font-size: 2rem;
+    color: var(--or-pale);
+  }
+  .grand-final .bcard-groupe {
+    color: var(--or);
+  }
+  .grand-final .bcard-count-num {
+    font-size: 4rem;
+    color: var(--or);
+  }
+  .grand-final-musique {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(200,169,110,0.25);
+    background: rgba(200,169,110,0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .musique-icone {
+    font-size: 1.5rem;
+    opacity: 0.8;
+  }
+  .musique-texte {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--or-pale);
+  }
+  .musique-artiste {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    margin-top: 0.25rem;
+    font-weight: 400;
+  }
+
+  .final-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  .final-detail {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanc-doux);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 400;
+  }
+  .final-detail::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--or);
+    border-radius: 50%;
+  }
+
+  /* ── FOOTER ─────────────────────────────── */
+  .footer {
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    background: var(--noir);
+    border-top: 1px solid rgba(200,169,110,0.1);
+  }
+  .footer-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1rem;
+  }
+  .footer-titre {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--blanc-doux);
+    margin-bottom: 0.5rem;
+  }
+  .footer-adresse {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--blanc-doux);
+    opacity: 0.65;
+    margin-top: 2rem;
+    font-weight: 300;
+  }
+  .footer-separator {
+    margin: 2rem auto;
+    max-width: 100px;
+  }
+
+  /* ── ANIMATIONS SCROLL ────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 640px) {
+    .ballet-item {
+      grid-template-columns: 2.5rem 1fr;
+    }
+    .ballet-meta { display: none; }
+    .stats-band { gap: 2rem 3rem; }
+    .hero-infos { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HÉRO ══════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="spot spot-1"></div>
+  <div class="spot spot-2"></div>
+  <div class="spot spot-3"></div>
+  <div class="rideau-gauche"></div>
+  <div class="rideau-droite"></div>
+
+  <!-- Particules lumineuses -->
+  <div class="particules" id="particules"></div>
+
+  <div class="hero-content">
+    <p class="hero-surtitre">A.S.P.M Danse présente</p>
+    <p class="hero-logo">Gala de fin d'année · 2026</p>
+
+    <h1 class="hero-titre">Rêves<br>en Corps</h1>
+    <p class="hero-sous-titre">Rêver en Corps</p>
+
+    <div class="separateur-or">
+      <div class="ligne-or"></div>
+      <div class="losange"></div>
+      <div class="ligne-or"></div>
+    </div>
+
+    <div class="hero-infos">
+      <div class="hero-info-item">
+        <div class="hero-info-label">Date</div>
+        <div class="hero-info-valeur">Dimanche 24 Mai
+          <small>2026</small>
+        </div>
+      </div>
+      <div class="hero-info-item">
+        <div class="hero-info-label">Lieu</div>
+        <div class="hero-info-valeur">La Coupole
+          <small>Saint-Loubès</small>
+        </div>
+      </div>
+      <div class="hero-info-item">
+        <div class="hero-info-label">Durée</div>
+        <div class="hero-info-valeur">1h 45
+          <small>dont entracte de 20 min</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-invite">
+    <span>Programme</span>
+    <div class="scroll-fleche"></div>
+  </div>
+</header>
+
+<!-- ══ STATS ════════════════════════════════════════════════= -->
+<div class="stats-band">
+  <div class="stat-item">
+    <div class="stat-chiffre">168</div>
+    <div class="stat-label">Danseurs inscrits</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-chiffre">26</div>
+    <div class="stat-label">Passages à scène</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-chiffre">5</div>
+    <div class="stat-label">Scènes Bollywood 🪷</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-chiffre">~71</div>
+    <div class="stat-label">Danseurs — Final Bollywood</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-chiffre">167+</div>
+    <div class="stat-label">Final tous styles</div>
+  </div>
+</div>
+
+<!-- ══ PROGRAMME ════════════════════════════════════════════= -->
+<main class="section">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Programme complet</span>
+    <h2 class="section-titre-grand">Le spectacle</h2>
+  </div>
+
+  <!-- PARTIE I -->
+  <div class="partie-label reveal">
+    <span class="partie-badge">Partie I</span>
+    <div class="partie-line"></div>
+    <span class="partie-duree">38 min 30 s</span>
+  </div>
+
+  <div class="ballets-liste">
+
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Discours d'ouverture · Ouverture du rideau</span>
+    </div>
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Vidéo Enfant 1</span>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">1</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Endormissement</span>
+        </div>
+        <div class="ballet-style">Éveil</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">9</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">2</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Initiation</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">10</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">3</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Enfant</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">4</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Intermédiaire</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">19</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Vidéo Enfant 2</span>
+    </div>
+
+    <div class="ballet-item bollywood reveal">
+      <div class="ballet-num">5</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Le rêve du présent</span>
+          <span class="tag-bollywood">🪷 Bollywood</span>
+          <span class="tag-julien">Praful</span>
+        </div>
+        <div class="ballet-style">Bollywood — Adulte Débutant</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">18</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">6</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Rêve éveillé</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Avancé</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">13–14</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">7</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Ado</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">12</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Vidéo Enfant 3</span>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">8</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Vertige nocturne</span>
+        </div>
+        <div class="ballet-style">Street — Adulte · Yuri</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">7–8</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Vidéo Danse — Orianne</span>
+    </div>
+
+    <div class="ballet-item bollywood reveal">
+      <div class="ballet-num">9</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Le rêve de l'énergie</span>
+          <span class="tag-bollywood">🪷 Bollywood</span>
+          <span class="tag-julien">Praful</span>
+        </div>
+        <div class="ballet-style">Bollywood — Intermédiaire</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">21</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">10</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Prépa Jazz</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">11</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Quand le jour se lève</span>
+        </div>
+        <div class="ballet-style">Urban — Adulte · Yuri</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">11–12</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRACTE -->
+  <div class="entracte reveal">
+    <div class="entracte-ligne"></div>
+    <div class="entracte-badge">
+      <span>Entracte</span>
+      <span class="entracte-duree">20 min</span>
+    </div>
+    <div class="entracte-ligne"></div>
+  </div>
+
+  <!-- PARTIE II -->
+  <div class="partie-label reveal">
+    <span class="partie-badge">Partie II</span>
+    <div class="partie-line"></div>
+    <span class="partie-duree">46 min 30 s</span>
+  </div>
+
+  <div class="ballets-liste">
+    <div class="transition-item">
+      <span class="transition-icon">🎬</span>
+      <span class="transition-label">Ouverture du rideau · Vidéo Enfant 4</span>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">1</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">La route du sommeil</span>
+        </div>
+        <div class="ballet-style">Street — Enfant · Yuri</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">12–13</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">2</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Initiation + Éveil — 2 groupes réunis</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">20</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">3</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Espoir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Avancé · Orianne</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">13</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">4</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Paix</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Prépa Jazz</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">5</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Au-delà de l'âme</span>
+        </div>
+        <div class="ballet-style">Street — Ado · Yuri</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16–17</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">6</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Femme</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Intermédiaire</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">19</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item bollywood reveal">
+      <div class="ballet-num">7</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Le rêve du métissage</span>
+          <span class="tag-bollywood">🪷 Bollywood</span>
+        </div>
+        <div class="ballet-style">Bollywood — Ado · Thème Inde / Afrique</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">8</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Cabaret · Orianne</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">18–19</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item bollywood reveal">
+      <div class="ballet-num">9</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Le rêve des origines</span>
+          <span class="tag-bollywood">🪷 Bollywood</span>
+        </div>
+        <div class="ballet-style">Bollywood — Enfant</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">18</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">10</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Lutte Harcèlement</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Ado · Thème fort</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">12</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">11</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Eclipse</span>
+        </div>
+        <div class="ballet-style">Street / Urban · Yuri</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">4</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">12</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Titre à définir</span>
+        </div>
+        <div class="ballet-style">Modern'Jazz — Enfant</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">16</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item reveal">
+      <div class="ballet-num">13</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre indefini">Solo</span>
+        </div>
+        <div class="ballet-style">Solo — Orianne · Professeure</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">1</div>
+        <div class="ballet-danseurs-label">danseuse</div>
+      </div>
+    </div>
+
+    <div class="ballet-item bollywood final reveal">
+      <div class="ballet-num">14</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre">Célébration</span>
+          <span class="tag-bollywood">🪷 Bollywood</span>
+          <span class="tag-julien">Praful</span>
+          <span class="tag-final">Grand Final</span>
+        </div>
+        <div class="ballet-style">Bollywood — Tous les groupes réunis</div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs">~71</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+
+    <div class="ballet-item final reveal">
+      <div class="ballet-num">⭐</div>
+      <div class="ballet-info">
+        <div class="ballet-titre-wrap">
+          <span class="ballet-titre" style="color:var(--or-pale)">Final — Tous les groupes</span>
+          <span class="tag-final">🌟 Clôture</span>
+        </div>
+        <div class="ballet-style">Tous styles · T-shirt blanc · Lampions · <em>A Million Dreams</em></div>
+      </div>
+      <div class="ballet-meta">
+        <div class="ballet-danseurs" style="color:var(--or)">167+</div>
+        <div class="ballet-danseurs-label">danseurs</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ══ FOCUS BOLLYWOOD ══════════════════════════════════════ -->
+<section class="bollywood-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">🪷 Parvati India avec ASPM Danse</span>
+      <h2 class="section-titre-grand" style="color:var(--rose-bollywood)">Focus Bollywood</h2>
+    </div>
+  </div>
+
+  <div class="bollywood-grid">
+
+    <!-- Débutant -->
+    <div class="bollywood-card reveal">
+      <div class="bcard-numero">P1 · 05 — Partie I, Scène 5</div>
+      <h3 class="bcard-titre">Le rêve du présent</h3>
+      <div class="bcard-groupe">Adulte Débutant</div>
+      <div class="bcard-count">
+        <span class="bcard-count-num">18</span>
+        <span class="bcard-count-label">danseurs sur scène</span>
+      </div>
+      <div class="bcard-danseurs">
+        <span class="bcard-nom">Balout Corinne</span>
+        <span class="bcard-nom">Barnel Céline</span>
+        <span class="bcard-nom">Vildieu Roxane</span>
+        <span class="bcard-nom">Caze Maëva</span>
+        <span class="bcard-nom">Dubois Julie-Claire</span>
+        <span class="bcard-nom">Eyherabide Céline</span>
+        <span class="bcard-nom">Goncalves de Sousa Maria</span>
+        <span class="bcard-nom">Heck Typhen</span>
+        <span class="bcard-nom">Jollard Marianne</span>
+        <span class="bcard-nom">Jollard Élisée</span>
+        <span class="bcard-nom">Joly Clémentine</span>
+        <span class="bcard-nom">Lebaillif Emilie</span>
+        <span class="bcard-nom">Poirée Céline</span>
+        <span class="bcard-nom">Ridel-Droetto Norah</span>
+        <span class="bcard-nom">Savean Amanda</span>
+        <span class="bcard-nom">Scotti Vera</span>
+        <span class="bcard-nom julien">✦ Julien « Praful »</span>
+      </div>
+    </div>
+
+    <!-- Intermédiaire -->
+    <div class="bollywood-card reveal">
+      <div class="bcard-numero">P1 · 09 — Partie I, Scène 9</div>
+      <h3 class="bcard-titre">Le rêve de l'énergie</h3>
+      <div class="bcard-groupe">Intermédiaire</div>
+      <div class="bcard-count">
+        <span class="bcard-count-num">21</span>
+        <span class="bcard-count-label">danseurs sur scène</span>
+      </div>
+      <div class="bcard-danseurs">
+        <span class="bcard-nom">Barriol Alexandra</span>
+        <span class="bcard-nom">Berrou Clémentine</span>
+        <span class="bcard-nom">Bostvironnois Amandine</span>
+        <span class="bcard-nom">Bruhl Lucie</span>
+        <span class="bcard-nom">Bruna Lydia</span>
+        <span class="bcard-nom">Debyser-Cabias Telma</span>
+        <span class="bcard-nom">Delavault Eloha</span>
+        <span class="bcard-nom">Denage Valérie</span>
+        <span class="bcard-nom">Domingues Véronique</span>
+        <span class="bcard-nom">Justin Laurence</span>
+        <span class="bcard-nom">Lagueyrie Angélique</span>
+        <span class="bcard-nom">Lam Sabrina</span>
+        <span class="bcard-nom">Martin Decourt Eléa</span>
+        <span class="bcard-nom">Martinez Mélanie</span>
+        <span class="bcard-nom">Mucignato Marine</span>
+        <span class="bcard-nom">Mucignato Nathalie</span>
+        <span class="bcard-nom">Peyresaubes Stéphanie</span>
+        <span class="bcard-nom">Poget Cyrine</span>
+        <span class="bcard-nom">Poirée Manon</span>
+        <span class="bcard-nom">Sanchez Gisèle</span>
+        <span class="bcard-nom julien">✦ Julien « Praful »</span>
+      </div>
+    </div>
+
+    <!-- Ado -->
+    <div class="bollywood-card reveal">
+      <div class="bcard-numero">P2 · 07 — Partie II, Scène 7</div>
+      <h3 class="bcard-titre">Le rêve du métissage</h3>
+      <div class="bcard-groupe">Ado · Inde / Afrique</div>
+      <div class="bcard-count">
+        <span class="bcard-count-num">16</span>
+        <span class="bcard-count-label">danseurs sur scène</span>
+      </div>
+      <div class="bcard-danseurs">
+        <span class="bcard-nom">Alexis Romane</span>
+        <span class="bcard-nom">Berrou Elisa</span>
+        <span class="bcard-nom">Darrenougue Manon</span>
+        <span class="bcard-nom">Debyser-Cabias Telma</span>
+        <span class="bcard-nom">Delavault Eloha</span>
+        <span class="bcard-nom">Goulinat Loucena</span>
+        <span class="bcard-nom">Joly Clémentine</span>
+        <span class="bcard-nom">Laurent Lucie</span>
+        <span class="bcard-nom">Martin Decourt Eléa</span>
+        <span class="bcard-nom">Michel Sébastien</span>
+        <span class="bcard-nom">Poget Cyrine</span>
+        <span class="bcard-nom">Poirée Manon</span>
+        <span class="bcard-nom">Puygauthier Marion</span>
+        <span class="bcard-nom">Ursenbach Sophie</span>
+        <span class="bcard-nom">Verhaeghe Julie</span>
+        <span class="bcard-nom">Vignolles Eva</span>
+      </div>
+    </div>
+
+    <!-- Enfant -->
+    <div class="bollywood-card reveal">
+      <div class="bcard-numero">P2 · 09 — Partie II, Scène 9</div>
+      <h3 class="bcard-titre">Le rêve des origines</h3>
+      <div class="bcard-groupe">Enfant · Cours Vendredi 19h</div>
+      <div class="bcard-count">
+        <span class="bcard-count-num">18</span>
+        <span class="bcard-count-label">danseurs sur scène</span>
+      </div>
+      <div class="bcard-danseurs">
+        <span class="bcard-nom">Barriol Alexandra</span>
+        <span class="bcard-nom">Baute Lilou</span>
+        <span class="bcard-nom">Benoit Catherine</span>
+        <span class="bcard-nom">Bourdarie Anne</span>
+        <span class="bcard-nom">Bruhl Lucie</span>
+        <span class="bcard-nom">Bruna Lydia</span>
+        <span class="bcard-nom">Coyral Delphine</span>
+        <span class="bcard-nom">Domingues Véronique</span>
+        <span class="bcard-nom">Justin Laurence</span>
+        <span class="bcard-nom">Maché Elsa</span>
+        <span class="bcard-nom">Michel Isabelle</span>
+        <span class="bcard-nom">Mucignato Estelle</span>
+        <span class="bcard-nom">Mucignato Marine</span>
+        <span class="bcard-nom">Mucignato Nathalie</span>
+        <span class="bcard-nom">Paraud Marot Sandrine</span>
+        <span class="bcard-nom">Peyresaubes Stéphanie</span>
+        <span class="bcard-nom">Rambaud-Dulau Delphine</span>
+        <span class="bcard-nom">Sanchez Gisèle</span>
+        <span class="bcard-nom">Ursenbach Sophie</span>
+      </div>
+    </div>
+
+    <!-- Grand Final Bollywood -->
+    <div class="bollywood-card grand-final reveal">
+      <div class="bcard-numero" style="color:rgba(200,169,110,0.6)">P2 · 14 — Finale Bollywood · Partie II, Scène 14</div>
+      <h3 class="bcard-titre">Célébration 🎉</h3>
+      <div class="bcard-groupe" style="color:var(--or)">Grand Final Bollywood — Tous les groupes réunis</div>
+      <div class="bcard-count">
+        <span class="bcard-count-num">~71</span>
+        <span class="bcard-count-label">danseurs · Débutant + Intermédiaire + Ado + Enfant + Praful</span>
+      </div>
+      <div class="grand-final-musique">
+        <span class="musique-icone">♬</span>
+        <div>
+          <div class="musique-texte">A Million Dreams</div>
+          <div class="musique-artiste">Pink · The Greatest Showman — Final Tous Styles · P2-15</div>
+        </div>
+      </div>
+      <div class="final-details">
+        <span class="final-detail">Défilé en ligne</span>
+        <span class="final-detail">T-shirt blanc customisé</span>
+        <span class="final-detail">Lampions individuels</span>
+        <span class="final-detail">~167 danseurs au total</span>
+        <span class="final-detail">Sortie après fermeture du rideau</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">A.S.P.M Danse</div>
+  <div class="footer-titre">Rêves en Corps — Rêver en Corps</div>
+  <div class="separateur-or footer-separator">
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div style="height:1px;width:40px;background:linear-gradient(90deg,transparent,var(--or-sombre))"></div>
+      <div style="width:5px;height:5px;background:var(--or-sombre);transform:rotate(45deg)"></div>
+      <div style="height:1px;width:40px;background:linear-gradient(90deg,var(--or-sombre),transparent)"></div>
+    </div>
+  </div>
+  <div class="footer-adresse">Dimanche 24 mai 2026 · La Coupole · Saint-Loubès</div>
+  <div class="footer-adresse" style="margin-top:0.5rem">🪷 Bollywood par Julien « Praful » — Parvati India</div>
+</footer>
+
+<script>
+  // Particules lumineuses
+  (function() {
+    const conteneur = document.getElementById('particules');
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particule');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+      p.style.opacity = Math.random() * 0.6;
+      conteneur.appendChild(p);
+    }
+  })();
+
+  // Reveal au scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6) * 0.07 + 's';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
